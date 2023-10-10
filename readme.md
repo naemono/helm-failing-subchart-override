@@ -63,3 +63,19 @@ value: set
 ❯ helm template --release-name demo . --set child.enabled=true --set child.spec.test=null | yq '.spec.test'
 value: set
 ```
+
+## Strangely working
+
+If the parent's values file is updated to this:
+```
+child:
+  enabled: true
+  spec:
+    test: null
+```
+
+This seems to work with 3.13.0
+
+```shell
+helm template --release-name demo .
+```
